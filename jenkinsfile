@@ -23,13 +23,14 @@ pipeline{
                  '''
             }
         }
-         stage('Run Test'){
-            steps{
-                sh '''
-                pytest
+        stage('Run Tests'){
+                steps{
+                    sh'''git
+                    .$VENV/bin/activate
+                    pytest
+                    '''
+                }
 
-                 '''
-            }
         }
     }
 
