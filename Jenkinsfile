@@ -16,7 +16,7 @@ pipeline{
             steps{
                 sh'''
                 python3 -m venv venv
-                .$VENV/bin/activate
+                . $VENV/bin/activate
                 pip install -r requirements.txt
 
 
@@ -26,7 +26,7 @@ pipeline{
         stage('Run Tests'){
                 steps{
                     sh'''
-                    .$VENV/bin/activate
+                    . $VENV/bin/activate
                     pytest
                     '''
                 }
