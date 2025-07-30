@@ -14,9 +14,9 @@ pipeline{
         }
         stage('setup Virtual Environment'){
             steps{
-                sh '''
+                sh'''
                 python3 -m venv venv
-                . $VENV/bin/activate
+                .$VENV/bin/activate
                 pip install -r requirements.txt
 
 
