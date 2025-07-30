@@ -17,7 +17,7 @@ pipeline{
                 sh '''
                 python3 -m venv venv
                 . $VENV/bin/activate
-              
+                pip install -r requirments.txt
 
 
                  '''
