@@ -8,7 +8,7 @@ pipeline{
     stages {
         stage('checkout') {
             steps {
-                git branch:'main', url:'https://github.com/namugarurasyda/june25-classdemo2.git' //specify your repository url here
+                git branch: 'main', url: 'https://github.com/namugarurasyda/june25-classdemo2.git' //specify your repository url here
                 
             }
         }
