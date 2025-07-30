@@ -1,9 +1,0 @@
-name: Hello world
-on: [push]
-jobs:
-  say_hello:
-    runs-on: ubuntu-latest
-    steps:
-        - name: Hello world
-          run: echo "Hello World"
-  
