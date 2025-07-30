@@ -25,7 +25,7 @@ pipeline{
         }
         stage('Run Tests'){
                 steps{
-                    sh'''git
+                    sh'''
                     .$VENV/bin/activate
                     pytest
                     '''
