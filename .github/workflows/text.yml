@@ -1,29 +1,28 @@
-name: Syda
+name: syda
 
 on: [pull_request, push]
 
 jobs:
-  tests: 
-    runs-on: Ubuntu latest
-    env:
-          VENV: venv
+  tests:
+    runs-on: ubuntu-latest
 
-    steps: 
+    steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
-      - name: setup-python
+
+      - name: Set up Python
         uses: actions/setup-python@v4
-        with: 
+        with:
           python-version: '3.12'
 
       - name: Install dependencies
-        run:
-           pip install -r requirements.txt
-
-      - name: Run tests
         run: |
-         pytest
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Django tests
+        run: |
+          pytest
 
       
           
