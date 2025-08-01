@@ -1,8 +1,39 @@
-name: Hello world
-on: [push]
+name: Syda
+
+on: [pull-request, push]
+
 jobs:
-  say_hello:
-    runs-on: ubuntu-latest
-    steps:
-        - name: Hello world
-          run: echo "Hello World"
+  tests: 
+    runs-on: Ubuntu latest
+    env:
+          VENV: venv
+
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: setup-python
+        uses: actions/setup-python@v5
+        with: 
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run:
+          python -m venv $VENV
+          source $VENV/bin/activate
+           pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          source $VENV/bin/activate
+          pytest
+
+        
+
+      
+    
+    
+
+
+
+
