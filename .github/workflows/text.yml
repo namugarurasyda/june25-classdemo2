@@ -23,6 +23,12 @@ jobs:
       - name: Run Django tests
         run: |
           pytest
+      
+      - name: Pylint tests
+        run: |
+          pip install Pylint
+          pylint . --ignore=venv, .pytest_cache
+          
 
       
           
