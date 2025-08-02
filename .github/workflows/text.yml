@@ -27,7 +27,8 @@ jobs:
       - name: Pylint tests
         run: |
           pip install Pylint
-          pylint . --ignore=venv, .pytest_cache
+          pip install pylint
+          pylint $(git ls-files '*.py')
           
 
       
