@@ -1,4 +1,6 @@
 load-plugins=pylint_django
+sys-path = ./
+ighored-modules =manage
 # Disable specific messages by their code
 disable= 
     C0303,  # Trailing whitespace
@@ -13,4 +15,7 @@ disable=
     C0305,
     C0103,
     R0903,
-    E0401
+    E0401,
+    missing-docstring
+
+    

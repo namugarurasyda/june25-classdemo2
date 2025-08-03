@@ -1,83 +1,164 @@
-name: python trial
+# name: python trial
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
 
-jobs:
-  install_dependencies:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+# jobs:
+#   install_dependencies:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+#       - name: Set up Python
+#         uses: actions/setup-python@v5
+#         with:
+#           python-version: '3.11'
 
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+#       - name: Install Dependencies
+#         run: |
+#           python -m pip install --upgrade pip
+#           pip install -r requirements.txt
 
 
-  lint:
-    needs: install_dependencies
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+#   lint:
+#     needs: install_dependencies
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
       
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+#       - name: Set up Python
+#         uses: actions/setup-python@v5
+#         with:
+#           python-version: '3.11'
 
-      - name: Install pylint
-        run: pip install pylint
+#       - name: Install pylint
+#         run: pip install pylint
 
-      - name: Lint code with pylint
-        run: pylint --output-format=github .
-  # Pylint infers the Python version from the environment it's running in.
-  # The '.' means Pylint will check all Python files in the current directory.
+#       - name: Lint code with pylint
+#         run: pylint --output-format=github .
+#   # Pylint infers the Python version from the environment it's running in.
+#   # The '.' means Pylint will check all Python files in the current directory.
 
-      - name: Check code formatting with pylint
-        run: pylint --output-format=github --score=n .
-        continue-on-error: true
+#       - name: Check code formatting with pylint
+#         run: pylint --output-format=github --score=n .
+#         continue-on-error: true
 
-  test:
-    needs: install_dependencies
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+#   test:
+#     needs: install_dependencies
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+#       - name: Set up Python
+#         uses: actions/setup-python@v5
+#         with:
+#           python-version: '3.11'
 
-      - name: Install Dependencies
-        run: |
+#       - name: Install Dependencies
+#         run: |
 
-          pip install -r requirements.txt
-          pip install pytest
+#           pip install -r requirements.txt
+#           pip install pytest
 
-      - name: run test
-        run: |
-           pytest
+#       - name: run test
+#         run: |
+#            pytest
 
-  build:
-    needs: [lint, test]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+#   build:
+#     needs: [lint, test]
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
 
-      - name: Simulate build step
-        run: echo "Simulating build step - package or zip your app here"
+#       - name: Simulate build step
+#         run: echo "Simulating build step - package or zip your app here"
+
+  name: python trial
+
+  on:
+    push:
+      branches:
+        - main
+    pull_request:
+      branches:
+        - main
+
+  jobs:
+    install_dependencies:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+
+        - name: Set up Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.11'
+
+        - name: Install Dependencies
+          run: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+
+
+    lint:
+      needs: install_dependencies
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+        
+        - name: Set up Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.11'
+
+        - name: Install Linters (pylint, flake8)
+          run: |
+            pip install pylint
+            pip install flake8
+        
+        - name: Run flake8
+          run: flake8 . --count --max-complexity=10 --max-line-length=88 --statistics
+
+        - name: Run pylint
+          run: pylint --output-format=github .
+
+    test:
+      needs: install_dependencies
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+
+        - name: Set up Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.11'
+
+        - name: Install Dependencies and pytest
+          run: |
+            pip install -r requirements.txt
+            pip install pytest
+
+        - name: Run tests
+          run: pytest
+
+    build:
+      needs: [lint, test]
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+
+        - name: Simulate build step
+          run: echo "Simulating build step - package or zip your app here"
