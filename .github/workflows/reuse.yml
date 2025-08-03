@@ -122,11 +122,11 @@
           with:
             python-version: '3.11'
 
-        - name: Install Linters (pylint, flake8, django-pylint)
+        - name: Install Linters (pylint, flake8)
           run: |
             pip install pylint
             pip install flake8
-            pip install django-pylint
+
         
         - name: Run flake8
           run: flake8 . --count --max-complexity=10 --max-line-length=100 --statistics
