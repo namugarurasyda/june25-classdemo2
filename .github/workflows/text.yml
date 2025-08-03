@@ -52,7 +52,8 @@ jobs:
           pip install -r requirements.txt
       
       - name: run test
-        run: npm test
+        run: |
+           pytest
 
       
       # - name: Test with pytest
