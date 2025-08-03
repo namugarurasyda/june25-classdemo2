@@ -16,6 +16,6 @@ disable=
     C0103,
     R0903,
     E0401,
-    missing-docstring
+
 
     
