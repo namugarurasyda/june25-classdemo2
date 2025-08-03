@@ -1,6 +1,6 @@
-[MESSAGES CONTROL]
+load-plugins=pylint_django
 # Disable specific messages by their code
-disable=
+disable= 
     C0303,  # Trailing whitespace
     C0114,  # Missing module docstring
     C0115,  # Missing class docstring
@@ -8,4 +8,9 @@ disable=
     W0621,
     W0404,
     C0415,
-    W0611
+    W0611,
+    C0304,
+    C0305,
+    C0103,
+    R0903,
+    E0401
