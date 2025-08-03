@@ -50,7 +50,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          
+      
+      - name: run test
+        run: npm test
+
       
       # - name: Test with pytest
       #   run: |
