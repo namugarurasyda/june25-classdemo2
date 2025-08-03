@@ -1,3 +1,6 @@
+"""
+apps configuration for the main project.
+"""
 from django.apps import AppConfig
 
 
