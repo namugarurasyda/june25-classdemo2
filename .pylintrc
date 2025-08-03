@@ -5,3 +5,7 @@ disable=
     C0114,  # Missing module docstring
     C0115,  # Missing class docstring
     C0116   # Missing function or method docstring
+    W0621,
+    W0404,
+    C0415,
+    W0611
