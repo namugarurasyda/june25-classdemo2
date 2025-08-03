@@ -1,21 +1,26 @@
+[MASTER]
+# Load the pylint-django plugin to understand Django code.
 load-plugins=pylint_django
+# Add your project's root to the Python path so pylint can find Django.
 sys-path = ./
-ighored-modules =manage
-# Disable specific messages by their code
-disable= 
+# Ignore the boilerplate manage.py file and any other files you don't want to lint.
+ignored-modules=manage
+
+[MESSAGES CONTROL]
+# Disable specific messages by their symbolic name
+disable=
     C0303,  # Trailing whitespace
     C0114,  # Missing module docstring
     C0115,  # Missing class docstring
     C0116,  # Missing function or method docstring
-    W0621,
-    W0404,
-    C0415,
-    W0611,
-    C0304,
-    C0305,
-    C0103,
-    R0903,
-    E0401,
-
+    W0621,  # Redefining name from outer scope
+    W0404,  # Reimport
+    C0415,  # Import outside toplevel
+    W0611,  # Unused import
+    C0304,  # Final newline missing
+    C0305,  # Trailing newlines
+    C0103,  # Invalid name
+    R0903,  # Too few public methods
+    E0401,  # Unable to import
 
     
